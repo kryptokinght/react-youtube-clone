@@ -7,6 +7,9 @@ import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 import API_KEY from '../api_keys/keys';
 
+//import 'bootstrap/dist/css/bootstrap.min.css';
+import './style1.css';
+
 //Create a new component
 //This will produce some new HTML
 class App extends Component {
