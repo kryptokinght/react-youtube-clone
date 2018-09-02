@@ -1,28 +1,25 @@
 const Path = require('path');
+console.log(Path.resolve(__dirname, './src'));
 
 module.exports = {
   entry: ['./src/index.js'],
+  mode: "development",
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: 'bun.js'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        include: Path.resolve(__dirname, '../src'),
-        use: {
-          loader: 'babel-loader',
-           options: {
-            presets: ["react", "env"]
-          } 
-        }
+        exclude: /node_modules/,
+        use: ['babel-loader']
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,  
-        use: [ 'css-loader' ]
+        use: [ 'css-loader', 'style-loader']
       }
     ]
   },

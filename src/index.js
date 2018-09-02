@@ -8,7 +8,7 @@ import VideoDetail from './components/video_detail';
 import API_KEY from '../api_keys/keys';
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
-import './style1.css';
+import './style.css';
 
 //Create a new component
 //This will produce some new HTML
