@@ -1,11 +1,10 @@
-const Path = require('path');
-console.log(Path.resolve(__dirname, './src'));
+const path = require('path');
 
 module.exports = {
   entry: ['./src/index.js'],
-  mode: "development",
+  mode: "production",
   output: {
-    path: __dirname,
+    path: path.join(__dirname, 'dist'),
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -14,12 +13,12 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'] //all the dependencies for babel-loader must be updated to @latest
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,  
-        use: [ 'css-loader', 'style-loader']
+        use: ['style-loader', 'css-loader'] //make sure the order of these loaders are maintained
       }
     ]
   },
@@ -28,7 +27,7 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './',
+    contentBase: path.join(__dirname, 'dist'),
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000
