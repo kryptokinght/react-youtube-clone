@@ -7,7 +7,7 @@ import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 import API_KEY from '../api_keys/keys';
 
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
 //Create a new component
