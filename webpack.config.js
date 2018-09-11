@@ -1,17 +1,25 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: ['./src/index.js'],
   mode: "production",
   output: {
-    //path: path.join(__dirname, 'dist'),
-    publicPath: '/',
+    path: path.join(__dirname, 'dist'),
+    publicPath: '',
     filename: 'bundle.js'
   },
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    })
+  ],
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader'] //all the dependencies for babel-loader must be updated to @latest
       },
@@ -23,7 +31,11 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
+    modules: [
+      'src', 
+      'node_modules'
+    ]
   },
   devServer: {
     historyApiFallback: true,
